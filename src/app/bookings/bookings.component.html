@@ -1,0 +1,36 @@
+<h2>New Booking</h2>
+<form (ngSubmit)="submitBooking()">
+  <label>
+    Customer Name:
+    <input [(ngModel)]="customerName" name="customerName" required>
+  </label>
+
+  <label>
+    Select Car:
+    <select [(ngModel)]="selectedCarId" name="car" required>
+      <option *ngFor="let car of cars" [value]="car.id">
+        {{ car.attributes.name }}
+      </option>
+    </select>
+  </label>
+
+  <label>
+    Select Service:
+    <select [(ngModel)]="selectedServiceId" name="service" required>
+      <option *ngFor="let service of services" [value]="service.id">
+        {{ service.attributes.name }}
+      </option>
+    </select>
+  </label>
+
+  <button type="submit">Create Booking</button>
+</form>
+
+<hr>
+
+<h3>Bookings</h3>
+<ul>
+  <li *ngFor="let booking of bookings">
+    {{ booking.attributes.customer_name }} - Car ID: {{ booking.attributes.car_id }}, Service ID: {{ booking.attributes.service_id }}
+  </li>
+</ul>
